@@ -58,7 +58,7 @@ class App extends Component {
         {this.state.medsList.map(med => {
           return (<h3 key={med.name + med.dose + med.quantity + med.directions}>{med.name} {med.dose} {med.quantity} {med.directions}</h3>);
         })}
-        <MedInput newMedList={this.newMedList} />
+        <MedInput newMedList={this.newMedList} newList={this.state.medsList} />
         {/* <UserInput /> */}
         {/* <Welcome /> */}
       </div>

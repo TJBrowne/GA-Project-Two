@@ -51,7 +51,7 @@ class MedInput extends Component {
     render() {
         return (
             <div className="MedInput">
-                <h2>Medication Information</h2>
+                <h2>Med Input Form</h2>
                 <form className="NewMed" onSubmit={this.onSubmit}>
                     <input className="inputMed" type="text" onChange={this.updateName} />Medication Name<br></br>
                     {/* <button className="btn-1" type="submit">Submit Med Name</button><br></br> */}
@@ -65,7 +65,7 @@ class MedInput extends Component {
                     <input className="inputDir" type="text" onChange={this.updateDirections} />Directions<br></br>
                     <button className="btn-4" type="submit">Submit</button><br></br>
                 </form>
-                <App updateName={this.updateName} updateDose={this.updateDose} updateQuantity={this.updateQuantity} updateDirections={this.updateDirections} />
+                {/* <App updateName={this.updateName} updateDose={this.updateDose} updateQuantity={this.updateQuantity} updateDirections={this.updateDirections} /> */}
             </div>
         )
     }
