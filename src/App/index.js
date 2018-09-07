@@ -14,21 +14,22 @@ class App extends Component {
         name: "Jon Doe",
         dob: "Feb 23, 1980",
       },
-      medsList: [{ //listing all the medications name, dose, directions on 1st page. // each med that will be entered.
-        name: "Amoxicillin",
-        dose: "500 mg",
-        amount: "14",
-        directions: "Take 1 capsule, twice daily",
-      },
-      // { //listing all the medications name, dose, directions on 1st page. // each med that will be entered.
-      //   name: "Lo Lo Estrin Fe",
-      //   dose: "1 mg/ 10 mcg",
-      //   amount: "28",
-      //   directions: "Take 1 tablet daily",
-      // }
+      medsList: [
+        { //listing all the medications name, dose, directions on 1st page. // each med that will be entered.
+          name: "Amoxicillin",
+          dose: "500 mg",
+          quantity: "14",
+          directions: "Take 1 capsule, twice daily",
+        },
+        { //listing all the medications name, dose, directions on 1st page. // each med that will be entered.
+          name: "Lo Lo Estrin Fe",
+          dose: "1 mg/ 10 mcg",
+          quantity: "28",
+          directions: "Take 1 tablet daily",
+        }
       ]
     }
-    // console.log(this.state.userInfo, this.state.medsList);    
+  console.log(this.state.userInfo, this.state.medsList);    
   }
   newMedList = (newItem) => {
     this.setState(prevState => {
@@ -48,22 +49,20 @@ class App extends Component {
   //     }
   //   })
   // }
-
   render() {
+    console.log(this.state.medsList);
+    
     return (
       <div className="App">
         <h1>Your Medicine Cabinet</h1>
         {this.state.medsList.map(med => {
-          return <h3>{med.name} {med.dose} {med.amount} {med.directions}</h3>
+          return (<h3 key={med.name + med.dose + med.quantity + med.directions}>{med.name} {med.dose} {med.quantity} {med.directions}</h3>);
         })}
         <MedInput newMedList={this.newMedList} />
         {/* <UserInput /> */}
         {/* <Welcome /> */}
-
       </div>
     )
   }
 }
 export default App;
-
-// key={med.id}
