@@ -54,18 +54,15 @@ class MedInput extends Component {
                 <h2>Med Input Form</h2>
                 <form className="NewMed" onSubmit={this.onSubmit}>
                     <input className="inputMed" type="text" onChange={this.updateName} />Medication Name<br></br>
-                    {/* <button className="btn-1" type="submit">Submit Med Name</button><br></br> */}
+                    
+                    <input className="inputDose" type="text" onChange={this.updateDose} />Dose<br></br>                   
 
-                    <input className="inputDose" type="text" onChange={this.updateDose} />Dose<br></br>
-                    {/* <button className="btn-2" type="submit">Submit Med Dosage</button><br></br> */}
-
-                    <input className="inputQuan" type="text" onChange={this.updateQuantity} />Quantity<br></br>
-                    {/* <button className="btn-3" type="submit">Submit Quantity</button><br></br> */}
+                    <input className="inputQuan" type="text" onChange={this.updateQuantity} />Quantity<br></br>                    
 
                     <input className="inputDir" type="text" onChange={this.updateDirections} />Directions<br></br>
-                    <button className="btn-4" type="submit">Submit</button><br></br>
+                    
+                    <button className="btn-2" type="submit">Submit</button><br></br>
                 </form>
-                {/* <App updateName={this.updateName} updateDose={this.updateDose} updateQuantity={this.updateQuantity} updateDirections={this.updateDirections} /> */}
             </div>
         )
     }

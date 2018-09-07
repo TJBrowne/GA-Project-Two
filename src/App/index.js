@@ -10,34 +10,22 @@ class App extends Component {
     super(props)
 
     this.state = {
-      userInfo: { // name, dob, medical indication, (maybe weight, bp)
-        name: "Jon Doe",
-        dob: "Feb 23, 1980",
-      },
+      userInfo: [{ 
+        name: " ",
+        dob: " ",
+      }],
       medsList: [
-        { //listing all the medications name, dose, directions on 1st page. // each med that will be entered.
-          name: "Amoxicillin",
-          dose: "500 mg",
-          quantity: "14",
-          directions: "Take 1 capsule, twice daily",
+        {
+          name: " ",
+          dose: " ",
+          quantity: " ",
+          directions: " ",
         },
-        { //listing all the medications name, dose, directions on 1st page. // each med that will be entered.
-          name: "Lo Lo Estrin Fe",
-          dose: "1 mg/ 10 mcg",
-          quantity: "28",
-          directions: "Take 1 tablet daily",
-        }
       ]
     }
     console.log(this.state.userInfo, this.state.medsList);
   }
-  newUserInfo = (newUser) => {
-    this.setState(prevState => {
-      const newPerson = [...prevState.userInfo];
-      newPerson.push(newUser);
-      return
-    })
-  }
+  
   newMedList = (newItem) => {
     this.setState(prevState => {
       const newMeds = [...prevState.medsList];
@@ -59,15 +47,20 @@ class App extends Component {
 
   render() {
     console.log(this.state.medsList);
+    console.log(this.state.userInfo);
+    
     return (
       <div className="App">
         <h1>Your Medicine Cabinet</h1>
         {this.state.medsList.map(med => {
           return (<h3 key={med.name + med.dose + med.quantity + med.directions}>{med.name} {med.dose} {med.quantity} {med.directions}</h3>);
         })}
-        <h1>Your Info</h1>       
-          <h3 key={this.state.userInfo.name + this.state.userInfo.dob}>{this.state.userInfo.name} {this.state.userInfo.dob}</h3>
-            
+        <h1>Your Info</h1>  
+        {this.state.userInfo.map(info => {
+          return (<h3 key={info.name + info.dob}>{info.name} {info.dob}</h3>)
+        })}     
+        {/* <h3 key={this.state.userInfo.name + this.state.userInfo.dob}>{this.state.userInfo.name} {this.state.userInfo.dob}</h3> */}
+
         <MedInput newMedList={this.newMedList} newList={this.state.medsList} />
         <UserInput newUserInfo={this.newUserInfo} newPatient={this.state.userInfo} />
         {/* <Welcome /> */}

@@ -37,10 +37,10 @@ class UserInput extends Component {
             <h2>Patient Information</h2>
             <form className="NewUser" onSubmit={this.onSubmit}>
                 <input className="updateName" type="text" onChange={this.updateName} />Name<br></br>
-                {/* <button className="btn-1" type="submit">Your Name</button><br></br> */}
 
                 <input className="updateBirth" type="text" onChange={this.updateBirth} />Date Of Birth<br></br>
-                <button className="btn-2" type="submit">Submit</button>
+                
+                <button className="btn-1" type="submit">Submit</button>
             </form>
             </div>
         )
