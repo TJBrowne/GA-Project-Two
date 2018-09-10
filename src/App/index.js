@@ -12,16 +12,16 @@ class App extends Component {
     this.state = {
       currentPanel: "Welcome",
       userInfo: [{
-        name: " ",
-        dob: " ",
+        name: JSON.parse(localStorage.getItem("userInfo.name")) || " ",
+        dob: JSON.parse(localStorage.getItem("userInfo.dob")) || " ",
       }],
       medsList: [
         {
-          name: " ",
-          dose: " ",
-          quantity: " ",
-          directions: " ",
-          time: " ",
+          name: JSON.parse(localStorage.getItem("medsList.name")) || " ",
+          dose: JSON.parse(localStorage.getItem("medsList.dose")) || " ",
+          quantity: JSON.parse(localStorage.getItem("medsList.quantity")) || " ",
+          directions: JSON.parse(localStorage.getItem("medsList.directions")) || " ",
+          time: JSON.parse(localStorage.getItem("medsList.time")) || " ",
         },
       ]
     }
@@ -31,6 +31,7 @@ class App extends Component {
     this.setState(prevState => {
       const newMeds = [...prevState.medsList];
       newMeds.push(newItem);
+      localStorage.setItem("medsList", JSON.stringify(newMeds))
       return {
         medsList: newMeds,
       }
@@ -40,6 +41,7 @@ class App extends Component {
     this.setState(prevState => {
       const newUser = [...prevState.userInfo];
       newUser.push(newUserItem);
+      localStorage.setItem("userInfo", JSON.stringify(newUser))
       return {
         userInfo: newUser,
       }
@@ -62,17 +64,16 @@ class App extends Component {
   }
   return = () => {
     this.setState({
-      currentPanel: "welcome",
+      currentPanel: "Welcome",
     })
   }
-
   render() {
     console.log(this.state.medsList);
     console.log(this.state.userInfo);
 
     return (
       <div className="App">
-        {/* <h1>Your Medicine Cabinet</h1>
+        {<h1>Your Medicine Cabinet</h1>}
         {this.state.medsList.map(med => {
           return (<h3 key={med.name + med.dose + med.quantity + med.directions + med.time}>
             {med.name} {med.dose} {med.quantity} {med.directions} {med.time}</h3>);
@@ -80,8 +81,8 @@ class App extends Component {
         <h1>Your Info</h1>  
         {this.state.userInfo.map(info => {
           return (<h3 key={info.name + info.dob}>{info.name} {info.dob}</h3>)
-        })}     */}
-        {/* <Welcome /> */}
+        })}  
+
         {this.state.currentPanel === "Welcome" && (
           <div>
             <Welcome
@@ -94,16 +95,14 @@ class App extends Component {
             </div>
           </div>
         )}
-        {/* <div className="nav">
-          <button className="goToMed" onClick={this.medInput}>Input Med Info</button>
-          <button className="goToUser" onClick={this.userInput}>Input User Info</button>
-        </div>  */}
 
         {/* <UserInput newUserInfo={this.newUserInfo} newPatient={this.state.userInfo} /> */}
         {this.state.currentPanel === "userInput" && (
           <UserInput
             userInfo={this.state.userInput}
             return={this.return}
+            newUserInfo={this.newUserInfo} 
+            newPatient={this.state.userInfo}
           />
         )}
         {/* <MedInput newMedList={this.newMedList} newList={this.state.medsList} /> */}
@@ -111,6 +110,8 @@ class App extends Component {
           <MedInput
             medsList={this.state.medInput}
             return={this.return}
+            newMedList={this.newMedList} 
+            newList={this.state.medsList}
           />
         )}
 
