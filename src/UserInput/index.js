@@ -36,9 +36,9 @@ class UserInput extends Component {
             <div className="UserInput">
             <h2>Patient Information</h2>
             <form className="NewUser" onSubmit={this.onSubmit}>
-                <input className="updateName" type="text" onChange={this.updateName} />Name<br></br>
+                <input className="updateName" type="text" placeholder="Name" onChange={this.updateName} /><br></br>
 
-                <input className="updateBirth" type="text" onChange={this.updateBirth} />Date Of Birth<br></br>
+                <input className="updateBirth" type="text" placeholder="Date Of Birth" onChange={this.updateBirth} /><br></br>
                 
                 <button className="btn-1" type="submit">Submit</button>
             </form>
