@@ -5,11 +5,13 @@ import Welcome from "../Welcome";
 import UserInput from "../UserInput";
 import MedInput from "../MedInput";
 
+
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      currentPage: "Welcome",
       userInfo: [{ 
         name: " ",
         dob: " ",
