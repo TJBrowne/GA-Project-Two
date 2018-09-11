@@ -40,7 +40,6 @@ h4 {
     border: 5px solid grey; 
     cursor: pointer;
 }
-
 .goToMed {
     font-size: 18px;
     border-radius: 20px;
@@ -52,7 +51,6 @@ h4 {
     transition: o.1s;
     cursor: pointer;
 }
-
 .goToUser {
     font-size: 18px;
     border-radius: 20px;
