@@ -1,4 +1,45 @@
-/* body {
-    font-family: 'Merriweather', serif;
+.NewMed {
     font-family: Arial, Helvetica, sans-serif;
-} */
+    font-size: 30px;
+}
+.btn-2 {
+    font-size: 18px;
+    border-radius: 20px;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid grey;
+    background-color: black;
+    color: white;
+    transition: o.1s;
+    cursor: pointer;
+}
+.inputMed {
+    font-size: 20px;
+    padding: 5px;
+    margin: 2px;
+    border: 5px solid grey;
+}
+.inputDose {
+    font-size: 20px;
+    padding: 5px;
+    margin: 2px;
+    border: 5px solid grey;
+}
+.inputQuan {
+    font-size: 20px;
+    padding: 5px;
+    margin: 2px;
+    border: 5px solid grey;
+}
+.inputDir {
+    font-size: 20px;
+    padding: 5px;
+    margin: 2px;
+    border: 5px solid grey;
+}
+.inputTime {
+    font-size: 15px;
+    padding: 5px;
+    margin: 2px;
+    border: 5px solid grey;
+}

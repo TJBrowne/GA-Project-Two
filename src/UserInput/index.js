@@ -30,8 +30,6 @@ class UserInput extends Component {
         event.preventDefault();
         this.props.newUserInfo(this.state.user);
     }
-
-
     render() {
         return (
             <div className="UserInput">
@@ -49,5 +47,4 @@ class UserInput extends Component {
         )
     }
 }
-
 export default UserInput;

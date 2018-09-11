@@ -18,9 +18,9 @@ class MedInput extends Component {
         this.createExtraInput = this.createExtraInput.bind(this);
     }
     updateName = (event) => {
-        let med = { ...this.state.medication }; // make a copy of the object that is in the state >  [...arrayName] & {...this.state.medication}
-        med.name = event.target.value;        // modify the property within that object
-        this.setState({                       // call setstate to update that object (in the state)
+        let med = { ...this.state.medication }; 
+        med.name = event.target.value;        
+        this.setState({                      
             medication: med,
         })
     }
@@ -52,7 +52,6 @@ class MedInput extends Component {
             medication: med,
         })
     }
-
     onSubmit = (event) => {
         event.preventDefault();
         this.props.newMedList(this.state.medication);
@@ -75,7 +74,7 @@ class MedInput extends Component {
                     <div className="container">
                         <input className="inputTime" type="time" placeholder="Time" onChange={this.updateTime} />
                         {this.createExtraInput()}
-                        <button className="btn-2" type="submit" onClick={() => this.setState(preS => preS.extraFormCount++)} >Add Time Input</button><br></br>
+                        <button className="btn-2" type="button" onClick={() => this.setState(preS => preS.extraFormCount++)} >Add Time Input</button><br></br>
                     </div>
                     <button className="btn-2" type="submit">Submit</button><br></br>
 

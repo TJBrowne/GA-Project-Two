@@ -24,7 +24,6 @@ class App extends Component {
         },
       ]
     }
-    // console.log(this.state.userInfo, this.state.medsList);
   }
   newMedList = (newItem) => {
     this.setState(prevState => {
@@ -49,31 +48,24 @@ class App extends Component {
   deleteHandler = item => {
     let i = this.state.medsList[item]
     console.log(i);
-
     let medsList = [...this.state.medsList];
-
     medsList.splice(i, 1);
     localStorage.setItem('medsList', JSON.stringify(medsList));
-
     this.setState({
       medsList: medsList,
     });
   };
 
-  deleteHandler = item => {
+  deleteHandlerTwo = item => {
     let i = this.state.userInfo[item]
     console.log(i);
-
     let userInfo = [...this.state.userInfo];
-
     userInfo.splice(i, 1);
     localStorage.setItem('userInfo', JSON.stringify(userInfo));
-
     this.setState({
       userInfo: userInfo,
     });
   };
-
   welcome = () => {
     this.setState({
       currentPanel: "welcome",
@@ -95,64 +87,60 @@ class App extends Component {
     })
   }
   render() {
-    console.log('medList', this.state.medsList);
-    console.log('userInfo', this.state.userInfo);
-
     return (
       <div className="App">
         {<h1>Your Medicine Cabinet</h1>}
-        {this.state.medsList.map((med, index) => {
-          return (<div className="oneMed">
-          <h3 key={med.name + med.dose + med.quantity + med.directions + med.time}>
-            {med.name} {med.dose} {med.quantity} {med.directions} {med.time}</h3>
-            
-            <input type="btn-one" value="Delete" onClick={()=>this.deleteHandler(index)}/>
+        <div className="container">
+          {this.state.medsList.map((med, index) => {
+            return (
+              <div className="oneMed">
+                <h3 key={med.name + med.dose + med.quantity + med.directions + med.time}>
+                  {med.name} {med.dose} {med.quantity} {med.directions} {med.time}</h3>
+
+                <input className="delete-button" type="button" value="Delete" onClick={() => this.deleteHandler(index)} />
+              </div>
+            );
+          })}
+          <h3>Patient Profile</h3>
+          {this.state.userInfo.map((info, index) => {
+            return (
+              <div className="oneMed">
+                <h3 key={info.name + info.dob}>{info.name} {info.dob}</h3>
+
+                <input className="delete-button" type="button" value="Delete" onClick={() => this.deleteHandlerTwo(index)} />
+              </div>
+            );
+          })}
+          {this.state.currentPanel === "Welcome" && (
+            <div>
+              <Welcome
+                item={this.props.medsList}
+                deleteHandler={this.props.deleteHandler}
+              />
+              <div className="nav">
+                <button className="goToMed" onClick={this.medInput}>Input Med Info</button>
+                <button className="goToUser" onClick={this.userInput}>Input User Info</button>
+              </div>
             </div>
-            );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-        })}
-        <h1>Your Info</h1>  
-        {this.state.userInfo.map((info, index) => {
-          return (<div className="oneMed">
-          <h3 key={info.name + info.dob}>{info.name} {info.dob}</h3>
-
-          <input type="btn-one" value="Delete" onClick={()=>this.deleteHandler(index)}/>
-          </div>
-          );
-        })}  
-
-        {this.state.currentPanel === "Welcome" && (
-          <div>
-            <Welcome 
-              item={this.props.medsList} 
-              deleteHandler={this.props.deleteHandler} 
+          )}
+          {this.state.currentPanel === "userInput" && (
+            <UserInput
+              userInfo={this.state.userInput}
+              return={this.return}
+              newUserInfo={this.newUserInfo}
+              newPatient={this.state.userInfo}
             />
-            <div className="nav">
-              <button className="goToMed" onClick={this.medInput}>Input Med Info</button>
-              <button className="goToUser" onClick={this.userInput}>Input User Info</button>
-            </div>
-          </div>
-        )}
-
-        {/* <UserInput newUserInfo={this.newUserInfo} newPatient={this.state.userInfo} /> */}
-        {this.state.currentPanel === "userInput" && (
-          <UserInput
-            userInfo={this.state.userInput}
-            return={this.return}
-            newUserInfo={this.newUserInfo} 
-            newPatient={this.state.userInfo}
-          />
-        )}
-        {/* <MedInput newMedList={this.newMedList} newList={this.state.medsList} /> */}
-        {this.state.currentPanel === "medInput" && (
-          <MedInput className="button"
-            medsList={this.state.medInput}
-            return={this.return}
-            newMedList={this.newMedList} 
-            newList={this.state.medsList}
-            deleteHandler={this.deleteHandler}            
-          />
-        )}
-
+          )}
+          {this.state.currentPanel === "medInput" && (
+            <MedInput className="button"
+              medsList={this.state.medInput}
+              return={this.return}
+              newMedList={this.newMedList}
+              newList={this.state.medsList}
+              deleteHandler={this.deleteHandler}
+            />
+          )}
+        </div>
       </div>
     )
   }
